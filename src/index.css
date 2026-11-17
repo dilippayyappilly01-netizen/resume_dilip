@@ -1,0 +1,54 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-serif: 'Cormorant Garamond', Georgia, serif;
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-signature: 'Mrs Saint Delafield', cursive;
+}
+
+@layer base {
+  body {
+    font-family: var(--font-sans);
+    background-color: #0b0d10;
+    color: #f3f5f8;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, .font-serif-display {
+    font-family: var(--font-serif);
+  }
+}
+
+.font-signature {
+  font-family: var(--font-signature);
+}
+
+.metric-numeral {
+  font-family: var(--font-serif);
+  font-variant-numeric: lining-nums tabular-nums;
+}
+
+@keyframes orbitCarousel {
+  0% {
+    transform: translateZ(-220px) rotateX(-2deg) rotateY(0deg);
+  }
+  100% {
+    transform: translateZ(-220px) rotateX(-2deg) rotateY(-360deg);
+  }
+}
+
+.orbit-ring {
+  transform-style: preserve-3d;
+  animation: orbitCarousel 54s linear infinite;
+}
+
+.orbit-ring.paused {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .orbit-ring {
+    animation-duration: 180s;
+  }
+}
